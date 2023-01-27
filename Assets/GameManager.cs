@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject Platform;
+
+    [SerializeField] private Image[] GorevGorselleri;
+    [SerializeField] private Sprite GorevTamamSprite;
+    [SerializeField] private int AtilmasiGerekenTop;
+    int BasketSayisi;
+
     void Start()
     {
-        
+        for (int i = 0; i < AtilmasiGerekenTop; i++)
+        {
+            GorevGorselleri[i].gameObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame

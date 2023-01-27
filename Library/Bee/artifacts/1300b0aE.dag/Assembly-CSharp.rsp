@@ -355,6 +355,7 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/GameManager.cs"
 "Assets/Platform_Guc.cs"
+"Assets/Top.cs"
 -langversion:9.0
 
 /deterministic
