@@ -9,11 +9,11 @@ public class Top : MonoBehaviour
     {
         if (other.CompareTag("Basket"))
         {
-
+            _GameManager.Basket();
         }
         else if (other.CompareTag("OyunBitti"))
         {
-
+            _GameManager.Kaybettin();
         }
     }
 }

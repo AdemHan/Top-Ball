@@ -36,4 +36,23 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    public void Basket()
+    {
+        BasketSayisi++;
+        GorevGorselleri[BasketSayisi - 1].sprite = GorevTamamSprite;
+        //BasketSayisi
+        // GorevGorselleri[i]
+
+        if (BasketSayisi == AtilmasiGerekenTop)
+        {
+            Debug.Log("Kazandýn");
+        }
+    }
+
+    public void Kaybettin()
+    {
+        Debug.Log("Kaybettin");
+    }
+
 }
