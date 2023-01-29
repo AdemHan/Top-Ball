@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Platform;
+    [SerializeField] private GameObject Platform;
+    [SerializeField] private GameObject Pota;
 
     [SerializeField] private Image[] GorevGorselleri;
     [SerializeField] private Sprite GorevTamamSprite;
@@ -55,4 +56,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Kaybettin");
     }
 
+    public void PotaBuyut()
+    {
+
+    }
 }
