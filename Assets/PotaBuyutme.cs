@@ -7,6 +7,7 @@ public class PotaBuyutme : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI Sure;
     [SerializeField] private int BaslangicSuresi;
+    [SerializeField] private GameManager _GameManager;
     IEnumerator Start()
     {
         Sure.text = BaslangicSuresi.ToString();
@@ -30,6 +31,7 @@ public class PotaBuyutme : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Carpma Var");
+        gameObject.SetActive(false); 
+        _GameManager.PotaBuyut();
     }
 }

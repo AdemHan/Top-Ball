@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("---LEVEL TEMEL OBJELERÝ")]
     [SerializeField] private GameObject Platform;
     [SerializeField] private GameObject Pota;
+    [SerializeField] private GameObject PotaBuyume;
+    [SerializeField] private GameObject[] OzellikOlusmaNoktalari;
 
+    [Header("---UI OBJELERÝ")]
     [SerializeField] private Image[] GorevGorselleri;
     [SerializeField] private Sprite GorevTamamSprite;
     [SerializeField] private int AtilmasiGerekenTop;
@@ -19,9 +23,18 @@ public class GameManager : MonoBehaviour
         {
             GorevGorselleri[i].gameObject.SetActive(true);
         }
+
+        // Invoke("OzellikOlussun", 3f);
     }
 
-    // Update is called once per frame
+    void OzellikOlussun()
+    {
+        int RandomSayi = Random.Range(0, OzellikOlusmaNoktalari.Length - 1);
+        PotaBuyume.transform.position = OzellikOlusmaNoktalari[RandomSayi].transform.position;
+        PotaBuyume.SetActive(true);
+    }
+
+
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftArrow)) // sol ok tusuna basildiginda
@@ -49,6 +62,10 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Kazandýn");
         }
+        if (BasketSayisi == 1)
+        {
+            OzellikOlussun();
+        }
     }
 
     public void Kaybettin()
@@ -58,6 +75,6 @@ public class GameManager : MonoBehaviour
 
     public void PotaBuyut()
     {
-
+        Pota.transform.localScale = new Vector3(55f, 55f, 55f);
     }
 }
