@@ -353,10 +353,10 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/GameManager.cs"
-"Assets/Platform_Guc.cs"
-"Assets/PotaBuyutme.cs"
-"Assets/Top.cs"
+"Assets/Scripts/GameManager.cs"
+"Assets/Scripts/Platform_Guc.cs"
+"Assets/Scripts/PotaBuyutme.cs"
+"Assets/Scripts/Top.cs"
 -langversion:9.0
 
 /deterministic
