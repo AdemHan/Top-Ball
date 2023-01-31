@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,17 +14,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] OzellikOlusmaNoktalari;
     [SerializeField] private AudioSource[] Sesler;
     [SerializeField] private ParticleSystem[] Efektler;
+    SceneManager scene;
 
     [Header("---UI OBJELERÝ")]
     [SerializeField] private Image[] GorevGorselleri;
     [SerializeField] private Sprite GorevTamamSprite;
     [SerializeField] private int AtilmasiGerekenTop;
     [SerializeField] private GameObject[] Paneller;
+    [SerializeField] private TextMeshProUGUI LevelAd;
+
 
     int BasketSayisi;
 
     void Start()
     {
+        LevelAd.text = "LEVEL :   " + SceneManager.GetActiveScene().name;
+
         for (int i = 0; i < AtilmasiGerekenTop; i++)
         {
             GorevGorselleri[i].gameObject.SetActive(true);
@@ -78,8 +85,10 @@ public class GameManager : MonoBehaviour
 
     public void Kaybettin()
     {
+
         Sesler[2].Play();
         Paneller[2].SetActive(true);
+        Time.timeScale = 0;
     }
 
     void Kazandin()
@@ -87,7 +96,7 @@ public class GameManager : MonoBehaviour
         Sesler[3].Play();
         Paneller[1].SetActive(true);
         PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
-
+        Time.timeScale = 0;
     }
 
     public void PotaBuyut(Vector3 Poz)
@@ -105,8 +114,30 @@ public class GameManager : MonoBehaviour
         switch (Deger)
         {
             case "Durdur":
+                Time.timeScale = 0;
                 Paneller[0].SetActive(true);
                 break;
+
+            case "DevamEt":
+                Time.timeScale = 1;
+                Paneller[0].SetActive(false);
+                break;
+
+            case "Tekrar":
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Time.timeScale = 1;
+                break;
+
+            case "SonrakiLevel":
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                Time.timeScale = 1;
+                break;
+
+            case "Ayarlar":
+
+                //ayarlar paneli yapýlabilir.
+                break;
+
         }
     }
 }
