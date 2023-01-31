@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image[] GorevGorselleri;
     [SerializeField] private Sprite GorevTamamSprite;
     [SerializeField] private int AtilmasiGerekenTop;
+    [SerializeField] private GameObject[] Paneller;
+
     int BasketSayisi;
 
     void Start()
@@ -77,13 +79,15 @@ public class GameManager : MonoBehaviour
     public void Kaybettin()
     {
         Sesler[2].Play();
-        Debug.Log("Kaybettin");
+        Paneller[2].SetActive(true);
     }
 
     void Kazandin()
     {
         Sesler[3].Play();
-        Debug.Log("Kazandin");
+        Paneller[1].SetActive(true);
+        PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+
     }
 
     public void PotaBuyut(Vector3 Poz)
@@ -93,5 +97,16 @@ public class GameManager : MonoBehaviour
         Sesler[0].Play();
         Pota.transform.localScale = new Vector3(55f, 55f, 55f);
         
+    }
+
+    public void Butonlarin›slemleri(string Deger)
+    {
+
+        switch (Deger)
+        {
+            case "Durdur":
+                Paneller[0].SetActive(true);
+                break;
+        }
     }
 }
