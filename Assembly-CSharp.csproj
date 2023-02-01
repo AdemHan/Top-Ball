@@ -58,9 +58,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PotaBuyutme.cs" />
+    <Compile Include="Assets\Scripts\AnaMenuManager.cs" />
     <Compile Include="Assets\Scripts\Platform_Guc.cs" />
     <Compile Include="Assets\Scripts\Top.cs" />
-    <Compile Include="Assets\Scripts\AnaMenuManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int AtilmasiGerekenTop;
     [SerializeField] private GameObject[] Paneller;
     [SerializeField] private TextMeshProUGUI LevelAd;
-
-
+    float ParmakPozX;
     int BasketSayisi;
 
     void Start()
@@ -48,16 +47,43 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow)) // sol ok tusuna basildiginda
+        if (Time.timeScale != 0 )
         {
-            if (Platform.transform.position.x > -1.5)  //duvarýn sol tarafindki mesafeyi ayarladik
-                Platform.transform.position = Vector3.Lerp(Platform.transform.position, new Vector3(Platform.transform.position.x -.3f, Platform.transform.position.y, Platform.transform.position.z), .050F);
-            //yukarida yapilan islem sola götürmek icin yapilan islem
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            if (Platform.transform.position.x < 1.5)
-                Platform.transform.position = Vector3.Lerp(Platform.transform.position, new Vector3(Platform.transform.position.x + .3f, Platform.transform.position.y, Platform.transform.position.z), .050F);
+
+            if (Input.touchCount > 0)
+            {
+
+                Touch touch = Input.GetTouch(0);
+                Vector3 TouchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 10));
+
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        ParmakPozX = TouchPosition.x - Platform.transform.position.x; 
+                        break;
+                    case TouchPhase.Moved:
+                        if (TouchPosition.x - ParmakPozX > -1.5 && TouchPosition.x - ParmakPozX < 1.5)
+                        {
+                            Platform.transform.position = Vector3.Lerp(Platform.transform.position, new Vector3(TouchPosition.x - ParmakPozX, Platform.transform.position.y, Platform.transform.position.z), .5F);
+
+                        }
+                        break;
+
+                }
+            }
+
+
+            if (Input.GetKey(KeyCode.LeftArrow)) // sol ok tusuna basildiginda
+            {
+                if (Platform.transform.position.x > -1.5)  //duvarýn sol tarafindki mesafeyi ayarladik
+                    Platform.transform.position = Vector3.Lerp(Platform.transform.position, new Vector3(Platform.transform.position.x - .3f, Platform.transform.position.y, Platform.transform.position.z), .050F);
+                //yukarida yapilan islem sola götürmek icin yapilan islem
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                if (Platform.transform.position.x < 1.5)
+                    Platform.transform.position = Vector3.Lerp(Platform.transform.position, new Vector3(Platform.transform.position.x + .3f, Platform.transform.position.y, Platform.transform.position.z), .050F);
+            }
         }
 
     }
